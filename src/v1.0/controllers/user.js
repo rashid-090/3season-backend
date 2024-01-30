@@ -4,6 +4,7 @@ const {
   ROLE_EMPLOYEE,
 } = require("../../config/constants");
 const messages = require("../../config/messages");
+const { uploadImage } = require("../services/external/cloudinary");
 const { makeQueryBuilder } = require("../services/internal/queryBuilder");
 const {
   getUserById,
@@ -49,9 +50,21 @@ const updateUser = async (req) => {
   };
 };
 
+const updateUserProfile = async (req) => {
+  console.log(req.file);
+  if (req.file) {
+    const file = await uploadImage(req.file);
+    await updateUserData(req?.user?._id, { image: file?.url }); 
+}
+  return {
+    message: messages?.success,
+  };
+};
+
 module.exports = {
   getUser,
   getUsersList,
   updateUser,
   getAppliedList,
+  updateUserProfile
 };

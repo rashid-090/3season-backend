@@ -11,6 +11,7 @@ const {
 const { createUser } = require("../services/internal/user");
 
 const login = async (req) => {
+  // console.log(req.body);
   const { headers, data } = await handleAuthenticate(req?.body, req?.headers);
   return { message: messages?.loggedIn, headers, data };
 };

@@ -35,6 +35,7 @@ const authenticateUser = async (username) => {
 
 const validatePassword = async (inputPassword, encryptedPassword) => {
     const validPass = await bcrypt.compare(inputPassword, encryptedPassword || "");
+    // console.log(validPass);
     if (!validPass) throw new NotFoundException(messages?.invalidEmailPass);
     return true;
 };

@@ -16,8 +16,8 @@ module.exports = (mongoose, collectionName) => {
         {
             name: {
                 type: String,
-                required: true,
-                unique: true,
+                // required: true,
+                // unique: true,
                 sparse: true,
                 uniqueCaseInsensitive: true,
             },
@@ -122,6 +122,10 @@ module.exports = (mongoose, collectionName) => {
                 type: Boolean,
                 default: NO,
             },
+            image:{
+                type: String,
+                default: "",
+            }
         },
         {
             timestamps: true,

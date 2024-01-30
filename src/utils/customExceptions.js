@@ -7,7 +7,7 @@ const {
     NOT_ACCEPTABLE,
     TOO_MANY_REQUESTS,
     UNAUTHORIZED_DEVICE,
-} = require("../config/statusCodes");
+} = require("../config/constants");
 
 class CustomException extends Error {
     constructor(message) {
@@ -74,6 +74,7 @@ class FormValidatorException extends BadRequestException {
 }
 
 module.exports = {
+    BadRequestException,
     UnauthorizedException,
     ForbiddenException,
     NotFoundException,

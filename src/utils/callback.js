@@ -5,6 +5,8 @@ module.exports = (callback) => (req, res, next) => {
     // define request variables
     const request = {
         body: req?.body ?? {},
+        file: req?.file ?? null,
+        files: req?.files ?? null,
         query: req?.query ?? {},
         params: req?.params ?? {},
         ip: req?.ip ?? "",
