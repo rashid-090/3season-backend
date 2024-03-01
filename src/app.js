@@ -1,6 +1,5 @@
 // framework
 const express = require("express");
-
 // external packages
 const helmet = require("helmet");
 const cors = require("cors");
