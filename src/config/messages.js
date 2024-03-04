@@ -40,6 +40,7 @@ module.exports = {
   wishItemRemovedSuccessfully: "Wish-list item removed successfully!",
   cartNotExist: "Cart is not exist!",
   wishlistNotExist: "Wish list is not exist!",
+  locationIsInvalid:"Location must be in this format Country,state,district,job-location"
 
 
 

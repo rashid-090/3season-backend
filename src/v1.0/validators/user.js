@@ -30,6 +30,35 @@ const signUpValidator = async (req, res, next) => {
     next();
 };
 
+const jobValidator = async (req, res, next) => {
+    await checkSchema({
+        location: {
+            notEmpty: { errorMessage: messages?.locationIsRequired, bail: true },
+            matches: {
+                options: [/^([^,]+),([^,]+),([^,]+),([^,]+)$/],
+                errorMessage: messages?.locationIsInvalid,
+            },
+            custom: {
+                options: (value) => {
+                    // Split the location string into its parts
+                    const parts = value.split(',');
+                    // Check if all parts are present (Country, State, District, JobLocation)
+                    if (parts.length === 4) {
+                        // Implement additional validation if necessary, for example:
+                        // - Check if the country, state, or district exist in your database or an external API
+                        // - Ensure that jobLocation meets certain criteria
+                        return true; // Return true if validation passes
+                    }
+                    return false; // Return false if validation fails
+                },
+                errorMessage: messages?.locationIsInvalid,
+            },
+        },
+    }).run(req);
+    next();
+};
+
 module.exports = (errorFormatter) => ({
     signUpValidator: [signUpValidator, errorFormatter],
+    jobValidator: [jobValidator, errorFormatter],
 });
